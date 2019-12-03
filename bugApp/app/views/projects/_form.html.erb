@@ -1,0 +1,11 @@
+
+<%= form_for @project ,url:user_projects_path ,local: true  do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div >
+    <%= form.submit %>
+  </div>
+<% end %>

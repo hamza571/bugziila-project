@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+  <% if current_user.manager? %>
+    <%= link_to 'Edit', edit_user_project_path%> |
+  <% end %>
+<%= link_to 'Back',user_projects_path%>   |
+<table>
+  <% if current_user.manager? %>
+		<tr>
+			<th>User Name</th>
+			<th>User Type</th>
+		</tr>
+  <%end%>
+
+  <% @prusers.each do |u|%>
+  	<% if current_user.manager? %>
+   		<tr>
+	  		<td><%= u.name%></td>
+	  		<td><%= u.user_type%></td>
+      </tr>
+    <%end%>
+  <%end%>
+</table>
+
+  <% if current_user.developer? %>
+   <h1>Show All bugs</h1>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Deadline</th>
+        <th>Types</th>
+        <th>Status</th>
+        <th>Assign</th>
+      </tr>
+       <%@bugs.each do |b|%>
+        <tr>
+          <td><%= b.title %></td>
+          <td><%= b.deadline %></td>
+          <td><%= b.types %></td>
+          <td><%= b.status %></td>
+          <% if b.developer_id.nil? %>
+            <td><%= link_to "Assign",user_project_bug_assign_bug_path(current_user.id, @project.id, b.id) %></td>
+            <% else %>
+            <td><%=User.find(b.developer_id).name %> </td>
+          <%end%>
+        </tr> 
+  <% end %>
+</table>
+
+ <%end%>
+
+
+<% if current_user.qa? %>
+<%= link_to 'Enter Bug' ,new_user_project_bug_path(current_user.id , @project.id)%>
+
+<%end%>

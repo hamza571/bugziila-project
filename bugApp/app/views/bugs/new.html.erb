@@ -1,0 +1,27 @@
+<h1>Added New Bug</h1>
+<%= form_for @bug, url: user_project_bugs_path do |f| %>
+<p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline %>
+  </p>
+  <p>
+   <%=f.label :image %>
+   <%=f.file_field :image %>
+  </p>
+   <p>
+     <%=f.label :types %>
+     <%=f.select :types, ["feature","bug"] %>
+  </p>
+  <p>
+     <%=f.label :status %>
+     <%=f.select :status,["new","started","completed"] %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<%end%>
+<%= link_to 'Back', user_project_bugs_path %>

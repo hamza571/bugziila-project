@@ -1,0 +1,19 @@
+
+
+<%= form_for @bug, url: new_user_project_bug_path, local: true do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline %>
+  </p>
+  <p>
+   <%=f.label :image %>
+   <%=f.file_field :image %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<%end%>

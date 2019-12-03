@@ -1,0 +1,19 @@
+<h1>Edit the Bug</h1>
+<%= form_for @bug, url: user_projects_path, local: true do |f| %>
+<p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline %>
+  </p>
+  <p>
+   <%=f.label :image %>
+   <%=f.file_field :image %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+ <%end%>
+<%= link_to 'Back', user_project_bugs_path %>
